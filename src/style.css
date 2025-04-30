@@ -1,3 +1,120 @@
 body {
-  background-color: burlywood;
+  background-color: grey;
+  width: 900px;
+  /* width: fit-content; */
+}
+
+#content {
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  max-height: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.5fr 300px 0.5fr;
+  grid-template-rows: 1fr 6fr 1fr;
+  align-items: center;
+  grid-template-areas:
+    ". search ."
+    ". weather .";
+}
+.form-container {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-element {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font: white;
+  cursor: pointer;
+}
+.input-element:hover {
+  font-size: 22px;
+}
+.weather-container {
+  grid-area: weather;
+  display: grid;
+  justify-content: center;
+  max-height: 400px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.25fr 0.75fr 1fr 1fr;
+  grid-template-areas:
+    "location location"
+    "icon temp"
+    "description description"
+    "uvindex uvindex";
+}
+.location-container {
+  grid-area: location;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.current-conditions-icon {
+  grid-area: icon;
+  text-align: center;
+  height: 150px;
+  width: 150px;
+}
+.animate-sun {
+  animation-name: spin;
+  animation-duration: 10000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-cloud,
+.animate-rain {
+  animation-name: slide;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+  /* animation: slide 3s linear both infinite alternate; */
+}
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(20px);
+  }
+}
+.description-container {
+  grid-area: description;
+  text-align: center;
+  font-size: 18px;
+}
+.temp-container {
+  grid-area: temp;
+  text-align: right;
+  font-size: 41px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.temp-container:hover {
+  font-size: 44px;
+}
+.current-conditions-text {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
 }
